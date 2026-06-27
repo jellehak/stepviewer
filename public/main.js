@@ -51,7 +51,10 @@ function frame() {
 }
 
 async function initOc() {
-  const distPath = "/node_modules/opencascade.js/dist/";
+  // const distPath = "/node_modules/opencascade.js/dist/";
+  // const distPath = "https://cdn.jsdelivr.net/npm/opencascade.js@1.1.1/dist/";
+  // Other cdn jsdelivr has a file size limit of 50MB, so we use unpkg for the larger wasm file.
+  const distPath = "https://unpkg.com/opencascade.js@1.1.1/dist/";
   return ocFactory({
     locateFile: (file) => `${distPath}${file}`
   });
