@@ -164,13 +164,41 @@ async function loadStep(file) {
   }
 }
 
-fileInput.addEventListener("change", async (event) => {
-  const file = event.target.files?.[0];
+function isStepFile(file) {
+  const extension = file?.name?.toLowerCase().split(".").pop();
+  return extension === "step" || extension === "stp";
+}
+
+async function handleIncomingFile(file) {
   if (!file) {
     return;
   }
+
+  if (!isStepFile(file)) {
+    setStatus("Unsupported file type. Drop a .step or .stp file.");
+    return;
+  }
+
   setStatus(`Reading ${file.name}...`);
   await loadStep(file);
+}
+
+fileInput.addEventListener("change", async (event) => {
+  const file = event.target.files?.[0];
+  await handleIncomingFile(file);
+});
+
+document.addEventListener("dragover", (event) => {
+  event.preventDefault();
+  if (event.dataTransfer) {
+    event.dataTransfer.dropEffect = "copy";
+  }
+});
+
+document.addEventListener("drop", async (event) => {
+  event.preventDefault();
+  const file = event.dataTransfer?.files?.[0];
+  await handleIncomingFile(file);
 });
 
 window.addEventListener("resize", resize);
