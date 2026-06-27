@@ -1,0 +1,17 @@
+{
+  "name": "STEP Viewer",
+  "short_name": "StepViewer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f6f9",
+  "theme_color": "#1d3557",
+  "description": "STEP Viewer using OpenCascade.js and Three.js",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

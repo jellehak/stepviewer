@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1d3557" />
+    <title>STEP Viewer</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- <script type="importmap">
+      {
+        "imports": {
+          "three/": "https://cdn.jsdelivr.net/npm/three@0.124.0/",
+          "opencascade.js/": "https://cdn.jsdelivr.net/npm/opencascade.js@1.1.1/"
+        }
+      }
+    </script> -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three/": "/node_modules/three/",
+          "opencascade.js/": "/node_modules/opencascade.js/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="toolbar">
+      <label>
+        STEP file
+        <input id="file-input" type="file" accept=".step,.stp" />
+      </label>
+      <span id="status">Loading OpenCascade...</span>
+    </header>
+    <main id="viewer"></main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
